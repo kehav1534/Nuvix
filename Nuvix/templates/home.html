@@ -1,0 +1,155 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Streamr - Search Movies</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+      .movie-card-image {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .movie-card-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.2);}
+      .search-input:focus-within {
+        box-shadow: 0 0 0 2px #E50914;}.nav-link:hover {
+        color: #E50914;}
+      .nav-link-active {
+        color: #E50914;font-weight: 700;
+      }
+       .logo-container:hover svg {
+        color: #E50914;}
+    </style>
+</head>
+<body class="bg-black">
+<div class="relative flex size-full min-h-screen flex-col bg-black text-white" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-800 px-6 sm:px-10 py-4">
+<div class="flex items-center gap-6 md:gap-8">
+<a class="flex items-center gap-3 text-white logo-container transition-colors duration-300" href="#">
+<div class="size-6 text-[#E50914]">  {}
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4ZM0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M32 24L20 16V32L32 24Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold leading-tight tracking-[-0.015em]">Streamr</h1>
+</a>
+<nav class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-gray-400 hover:text-[#E50914] text-sm font-medium leading-normal transition-colors duration-300 nav-link" href="#">Home</a>
+<a class="text-gray-400 hover:text-[#E50914] text-sm font-medium leading-normal transition-colors duration-300 nav-link" href="#">Series</a>
+<a class="text-gray-400 hover:text-[#E50914] text-sm font-medium leading-normal transition-colors duration-300 nav-link nav-link-active" href="#">Movies</a>
+<a class="text-gray-400 hover:text-[#E50914] text-sm font-medium leading-normal transition-colors duration-300 nav-link" href="#">New &amp; Notable</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-xs search-input rounded-md bg-gray-800 border border-gray-700 transition-all duration-300">
+<div class="flex w-full flex-1 items-stretch h-full">
+<div class="text-gray-500 flex items-center justify-center pl-3">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-md text-gray-300 focus:outline-none focus:ring-0 border-none bg-transparent h-full placeholder:text-gray-500 px-3 text-sm font-normal leading-normal" placeholder="Search movies &amp; series" value=""/>
+</div>
+</label>
+<button aria-label="Menu" class="md:hidden flex items-center justify-center rounded-full h-10 w-10 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors duration-300">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+</svg>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9fAJcAxF0okzCgBwo00jXa3LwJnd10hD4q49rj-SGlK6B-I1AhvKL_0TbxhIw0THA50sjXrGTp6YMYUcOdBJJoGSypgkRgeE3CwXssRKb1yMiqo5EfGc56U8stqSL6_PS8BzwsP_N-lRv52W_s3bk92vBrAnyV4oO82Vx-CfX49kbqh4m8sojyqFUiiJ2OHfGYK1uLTYU12iIT7VlOTlV4_D0eGGsV5qAUKAdG06ZmuJspM4Wpb6njwusH7cHolae52laF1jcgzo");'></div> {}
+</div>
+</header>
+<main class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col w-full max-w-screen-xl">
+    <!--
+<div class="px-2 sm:px-4 py-3 mb-6">
+<label class="flex flex-col min-w-40 h-14 w-full search-input rounded-md bg-gray-800 border border-gray-700 transition-all duration-300">
+<div class="flex w-full flex-1 items-stretch h-full">
+<div class="text-gray-500 flex items-center justify-center pl-4">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-gray-300 focus:outline-none focus:ring-0 border-none bg-transparent h-full placeholder:text-gray-500 px-4 text-base font-normal leading-normal" placeholder="Search for movies by title or keyword..."/>
+
+<div class="flex items-center justify-center pr-4">
+<button aria-label="Clear search" class="flex cursor-pointer items-center justify-center rounded-full text-gray-500 hover:text-white transition-colors duration-300">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+</svg>
+</button>
+</div>
+</div>
+</label>
+</div>
+-->
+<section class="mb-10">
+<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-4 pt-2 text-gray-100">Top Results</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 p-2 sm:p-4">
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8QnSYzWMiAk3pw6QCNUewVh-XecvKOasnzpRsDPSxKCr0lPlEmHQdnAFqeZXeteAv1A4lWD4YYPWEL994y7VwNRr0yURhobKLrCi5P1MgAHk56GoyjyZUTZDOughx8gASF0T0cb7mAkPnro3JJwqDuPlyPsRChgJkhWjKdC_W1t3CAjspsbWU-KbuedmLdUYQFeMtHChEJlbYvLdW35y7ZQO8BKADM2DYX5qujDDZ990Rs7_augs7PwwIEgE9yn4Er4FdjP_U9QM");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Last Stand</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDMCcNbehjLXM8WQ4wmPG6J_XyVNZpDhwWG7Q4JMUYqWW32CaaIV7W6hJ5SuGJyz7SAOJSw5KxuCS1v-RYwjpKa3jvnTGzCQUESvUjYnSbW7qv6WnBl4mDRvVNIPGDUmnfsEV_ESB-tx3M_H1X8FffPy2sfjLQEIg-ryeH867FwXb8YHBYrysTUD1-jhZCC4znjlKFKnuPi2SLBsnn0QfQp-FuqHiNMJfqdCGJbwToDq0250pU2JBxBhrlLbqTLEczPp2siM-USmBU");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">City of Shadows</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC79YhXlp9qIdV3ixPUX_MSMyqTp1ZdTXrBKv7rVvdnPd-M-gG-ff1qhHhkAsllsLHQVXc9Gw7HS7li6nqw7CRebNOXsXV5fzROXBFBq16Ig6_wu2tD7dp4exYKla0qjxZS2ucyi_QZ7mp3XnfmclOiCmlmapXAXZrJOoH_KUF-0c--JrGqIzpt7XYpVf1TvY1gNuoBlHhSq72oQraY5d6_kB7OfcXPJyCIxN5pbLIIc1IbqA3SUfsvnIG6yavNxwKj21fkBl7ZBZQ");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Silent Witness</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVyfPzV56ohsmVoW3kFFgQbD4zDRtG5xszzaG9H2xTtFDYykxxX-Yu0yV2ozusWEtLuF2yz3T58QOn8ujkke5CWsgeb8uvhpWEF0HGPEl42ebplZ6fZaNWd8UApDJTvDdeqQNQrmwVU2ztXfHGvXAEcrTN0m5BHBLP6pKZX0XAiSoyF2CBwVDk_kl5_coW4FNjvmBwigDbtxFLhOLyT-LtXpmlDuITEqlw1ybINqZeBtg2BdGBk2P3a4R4wfT41Wil2IfChw4ra9M");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Great Escape</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhrpHwfweapOLkyrR6B-pTXJ4ymtF25PYeg0R8bW7kxy9BadVxRtUEGUkf_SZopC7CEKiYVmeuLPqiunAgqNQK2mQ43sD-ky6mOX3bvLfpl6XaJHyyBnEjuYXqXJpLiyvHuLCwTdFmx5LAYC5P08gFZlog_HK2Ota8dOn8ESug79KfgZ4T-wOeT2OBEWt03ngZYmAJ3GPAQH3km2v1er9ZHDt4NZhBcuqsKlv2dG4tNrykXjxQDQYZppNA6YAAAWHpbczTMg2kaJ4");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Hidden Fortress</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRssnGspVYLjQNis4aThJ6J0AFPEvBc8ysTo_NamBJct9JvfD6aW9QofYGwumy0HKjDDxU97DZdtamUeDtuL6WhAz9Bz5_AoFVEbclpywoMyDRji4myyT2XYjmRplrNmbRW0JlQ42JL1AHl_5OnIt9H8USfcgE3NBRCR_RDkJ-i9UbV_JtokeHKS6N3Z4o12d-4-HD5zKOU0PbSh5UEOfvAcx6ZpuFAA3tjZ9TKpq_FihEdaghe_0cty0i-WyHj0w6cDbBW41eIWQ");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Ironclad</p> {}
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-4 pt-2 text-gray-100">Action Movies</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 p-2 sm:p-4">
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEF_WVqxwfg29w7f---FgXGLTZBUiWh0v9ybwgQANtuCLAbtUhr4OhCzFPhc3c_M62VjFDHx68y4N6tqSIi90ntx7n0PnvJ27WNOlvD-xvMWT0g0WwerJfA0QYhF0GzQlDeRc0aepQAK_l7bdjMyjvMyb28hTQrZaeD8sVBEk5nIR7NDQdJNBIozG3tCX7FkrvWSIaUP9cBF45iRQAvBc7kQZwyfVECp341J6IzwxLyg_diUtLRzARmLkOyyoBMrctMU3Yl-Lh5oY");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Last Stand</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKa44GhKEzKS9s_1yibopffjSCJknWevvS8yY9plEOFYCDj2AkGPADi0bJVdnzM5YxsQ7fOk4l3lBQxtrlWKIv55GaU_acz_0y4UkJkuhhegUOYNynmhNHCLTuR0hekDE6HRUY7Ti7oo7elaEAO0KCL_-onKTqqAqjNS7Zpw6JajOuwtlPF8d-_ymgayoMXyuUmOdU9fB9g5zZC1y-_AG6e-lCaGvnrkdomzCEYatTjdlBQTpYQaf8uzORWbWDu2ypFCEkBRwSn78");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">City of Shadows</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDD4El5qamiaHhBZcGoNLC2Q04XJTo69LwZNFOibPxMnTKGcpDQotSPK7SVFP34HH46ZJanVeGP52slsa5Zq4T5mhTxZw_yQOasJ5_qwBmYSlklSJmyCF2bAqI_S-_rEZ5e5y6lubHV2VAOW74-yeH-DPvwMW2gw6_GtNldsYb6vTOMdmhQM9mc7n1fbTS_h4VAhtIv3h720eSzXbPC5tSKw3desbW1_8p-2-dfmiJ36ejV7_oS2d-2UCn0QLsTuJ5eOCHbIq8b9c0");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Silent Witness</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCahqR32Gsx3ndIdtueSZqcZWgVXt0KVN7V5fa5SBXasZH1IONirWdTturIVv7r7DGt1KSNAEmg7CFG--MwjSn6y1aUxTw46U-K3mGEU0IBfAomeK-KPA0uyEvYZGbIswE30F623bvu4NvrBCnXHtcgsvzYCt-eCf4q-jmrMQXJr9gx0XHTqK61T75h4Eq7FKEHLRMhKOL525Ido-NRnagWca_Tv83ppHlH5GvmATXca5JlP_61V9RrmlBOTAXejqOl0jf2RuYR8K0");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Great Escape</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZkqLW0SlEwuj-vYu4gHTtxVXxW1s2qL0Yj2oodQPYuJ6Rvt_KUedpLdbUBuzkdM_3XTuG7Uv4vzBa60vSAW9rTB-zLz94ZDLr9tvKT1VwYcIY__Z--g-AxzkZ8bAVxSOtCOE613ZKxBozzkzsYcnVZfAqjuNpXeNB9SkwDoNmMFXEP1mo5Ldbq6B3rJOxxB0uRmmASI6B3TF2pkwJqSya-dPvpdk07xTygT4f5jMwqf2KlYwvjwcQ7rPkyV-Ia-LpwBzM-_RMGcs");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Hidden Fortress</p> {}
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg movie-card-image border border-transparent group-hover:border-[#E50914]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzSi9Z4bs7Giq2dlBc_OrGn_aFtl91P-Dyv_Cn5YmXpssAAYO1xiYUswspP2vMHOSsjZrkYpzDzC3ylF7W8GWCDkZRTao2uk7w9OxEGaVseEFq78j4onoKqY2NjSBJmJK1CQG4do9ParnZ9oBev0EZtG-rye9YQqGVZnOzd5ekXBfTMUNoJtypPPUgJaRR_B0G2obR815niCbdmVmxnhQJjtc7aQ0i2PLHXvKF2fYvQZT80WW6oaJ-fWKKSm50glzFcl9XpflqRG4");'></div> {}
+<p class="text-gray-300 text-sm sm:text-base font-medium leading-normal truncate group-hover:text-[#E50914] transition-colors duration-300">The Ironclad</p> {}
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="border-t border-solid border-t-gray-800 px-10 py-6 text-center">
+<p class="text-gray-600 text-sm">© 2024 Streamr. All Rights Reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>
